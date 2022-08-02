@@ -3,10 +3,10 @@ import dogs from "./modules/dogs";
 
 //Create store
 export default createStore({
-  state: {
-    dogs: 0,
-  },
+  state: {},
   mutations: {},
   actions: {},
-  modules: {},
+  modules: {
+    dogs,
+  },
 });

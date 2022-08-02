@@ -4,11 +4,27 @@ const state = {
   dogs: [],
 };
 
-const getters = {};
+const getters = {
+  allDogs: (state) => state.dogs,
+};
 
-const actions = {};
+const actions = {
+  async fetchDogs({ commit }) {
+    const res = await axios.get("https://dog.ceo/api/breed/hound/images");
 
-const mutations = {};
+    commit("setDogs", res.data.message.slice(0, 99)); //Only return 100 images
+  },
+
+  async filterDogs({ commit }, breed) {
+    const res = await axios.get(`https://dog.ceo/api/breed/${breed}/images`);
+
+    commit("setDogs", res.data.message);
+  },
+};
+
+const mutations = {
+  setDogs: (state, dogs) => (state.dogs = dogs),
+};
 
 export default {
   state,
