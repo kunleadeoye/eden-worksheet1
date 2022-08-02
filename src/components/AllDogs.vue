@@ -9,7 +9,7 @@
       <div v-for="dog in allDogs" :key="dog">
         <img
           class="w-full object-center object-cover rounded-xl h-auto max-w-lg"
-          :src="dog"
+          v-lazy="dog"
         />
       </div>
     </div>
@@ -21,7 +21,6 @@ import FilterDogs from "./FilterDogs.vue";
 import TheLoader from "./TheLoader.vue";
 export default {
   name: "AllDogs",
-  props: {},
   components: {
     FilterDogs,
     TheLoader,
