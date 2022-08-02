@@ -2,11 +2,13 @@ import axios from "axios";
 
 const state = {
   dogs: [],
+  breeds: [],
   loading: true,
 };
 
 const getters = {
   allDogs: (state) => state.dogs,
+  allBreeds: (state) => state.breeds,
   isLoading: (state) => state.loading,
 };
 
@@ -26,10 +28,18 @@ const actions = {
     commit("setDogs", res.data.message);
     commit("setLoading", false);
   },
+
+  async fetchBreeds({ commit }) {
+    const res = await axios.get("https://dog.ceo/api/breeds/list/all");
+    const result = Object.keys(res.data.message);
+
+    commit("setBreeds", result);
+  },
 };
 
 const mutations = {
   setDogs: (state, dogs) => (state.dogs = dogs),
+  setBreeds: (state, breeds) => (state.breeds = breeds),
   setLoading: (state, payLoad) => (state.loading = payLoad),
 };
 
