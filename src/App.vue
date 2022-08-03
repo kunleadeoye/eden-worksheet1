@@ -1,15 +1,10 @@
 <template>
-  <all-dogs />
+  <router-view></router-view>
 </template>
 
 <script>
-import AllDogs from "./components/AllDogs.vue";
-
 export default {
   name: "App",
-  components: {
-    AllDogs,
-  },
 };
 </script>
 
